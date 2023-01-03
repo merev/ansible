@@ -29,7 +29,7 @@ Vagrant.configure(2) do |config|
     web.vm.provision "shell", path: "initial-config/add_hosts.sh"
     web.vm.provision "shell", path: "initial-config/ansible_clients_setup.sh"
 
-    web1.vm.provider "virtualbox" do |v|
+    web.vm.provider "virtualbox" do |v|
       v.gui = false
       v.memory = 1024
       v.cpus = 1
