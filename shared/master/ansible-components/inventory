@@ -1,15 +1,15 @@
-web1 ansible_host=192.168.99.100
+web ansible_host=192.168.99.100
 db ansible_host=192.168.99.101
-clnt ansible_host=192.168.99.102
+docker ansible_host=192.168.99.102
 
 [webservers]
-web1
+web
 
 [dbservers]
 db
 
 [stations]
-clnt
+docker
 
 [servers:children]
 webservers
