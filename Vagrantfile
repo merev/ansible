@@ -29,7 +29,7 @@ Vagrant.configure(2) do |config|
     web.vm.provision "shell", path: "initial-config/add_hosts.sh"
     web.vm.provision "shell", path: "initial-config/ansible_clients_setup.sh"
 
-    web1.vm.provider "virtualbox" do |v|
+    web.vm.provider "virtualbox" do |v|
       v.gui = false
       v.memory = 1024
       v.cpus = 1
@@ -52,12 +52,12 @@ Vagrant.configure(2) do |config|
   end
 
   config.vm.define "docker" do |docker|
-    docker.vm.box = "merev/centos-stream-8"
+    docker.vm.box = "merev/debian-11"
     docker.vm.hostname = "docker"
     docker.vm.network "private_network", ip: "192.168.99.102"
     docker.vm.synced_folder "shared/", "/shared"
     docker.vm.provision "shell", path: "initial-config/add_hosts.sh"
-    docker.vm.provision "shell", path: "initial-config/ansible_clients_setup.sh"
+    docker.vm.provision "shell", path: "initial-config/ansible_debian_clients_setup.sh"
     docker.vm.provision "shell", path: "initial-config/docker_setup.sh"
 
     docker.vm.provider "virtualbox" do |v|
