@@ -23,3 +23,15 @@
           - name: bgapp-net
         volumes:
           - bgapp-web-vol:/var/www/html
+          
+    - name: Run Db Container
+      community.docker.docker_container:
+        name: db
+        image: merev/bgapp-db-componenT
+        networks:
+          - name: bgapp-net
+        env:
+          MYSQL_ROOT_PASSWORD: "12345"          
+        
+
+
