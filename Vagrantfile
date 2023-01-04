@@ -27,7 +27,7 @@ Vagrant.configure(2) do |config|
     web.vm.network "forwarded_port", guest: 80, host: 8080
     web.vm.synced_folder "shared/", "/shared"
     web.vm.provision "shell", path: "initial-config/add_hosts.sh"
-    web.vm.provision "shell", path: "initial-config/ansible_clients_setup.sh"
+    web.vm.provision "shell", path: "initial-config/ansible_redhat_clients_setup.sh"
 
     web.vm.provider "virtualbox" do |v|
       v.gui = false
@@ -42,7 +42,7 @@ Vagrant.configure(2) do |config|
     db.vm.network "private_network", ip: "192.168.99.101"
     db.vm.synced_folder "shared/", "/shared"
     db.vm.provision "shell", path: "initial-config/add_hosts.sh"
-    db.vm.provision "shell", path: "initial-config/ansible_clients_setup.sh"
+    db.vm.provision "shell", path: "initial-config/ansible_redhat_clients_setup.sh"
 
     db.vm.provider "virtualbox" do |v|
       v.gui = false
