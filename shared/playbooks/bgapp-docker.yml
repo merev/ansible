@@ -5,7 +5,7 @@
     - name: Instal docker module
       ansible.builtin.command: sudo pip3 install docker
 
-    - name: Example clone of a single branch
+    - name: Clone bgapp project
       ansible.builtin.git:
         repo: https://github.com/merev/bgapp.git
         dest: ./
