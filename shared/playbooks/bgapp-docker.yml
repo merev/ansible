@@ -5,22 +5,22 @@
     - name: Instal docker module
       ansible.builtin.command: sudo pip3 install docker
 
-    - name: Clone bgapp project
-      ansible.builtin.git:
-        repo: https://github.com/merev/bgapp.git
-        dest: ./
-        
-    - name: Build web image
-      community.docker.docker_image:
-        build:
-          path: bgapp/Dockerfile.web
-        name: bgapp-web
-    
-    - name: Build db image
-      community.docker.docker_image:
-        build:
-          path: bgapp/Dockerfile.db
-        name: bgapp-db
+#    - name: Clone bgapp project
+#      ansible.builtin.git:
+#        repo: https://github.com/merev/bgapp.git
+#        dest: ./
+#        
+#    - name: Build web image
+#      community.docker.docker_image:
+#        build:
+#          path: bgapp/Dockerfile.web
+#        name: bgapp-web
+#    
+#    - name: Build db image
+#      community.docker.docker_image:
+#        build:
+#          path: bgapp/Dockerfile.db
+#        name: bgapp-db
 
 #    - name: Create a volume for the web Container
 #      community.docker.docker_volume:
@@ -33,7 +33,7 @@
     - name: Run Web Container
       community.docker.docker_container:
         name: web
-        image: bgapp-web
+        image: naskodlg/bgapp-web:ansible
         ports:
           -  "8080:80"
         networks:
@@ -44,7 +44,7 @@
     - name: Run Db Container
       community.docker.docker_container:
         name: db
-        image: bgapp-db
+        image: naskodlg/bgapp-db:ansible
         networks:
           - name: bgapp-net
         env:
