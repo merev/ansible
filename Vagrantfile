@@ -6,7 +6,7 @@ Vagrant.configure(2) do |config|
   config.ssh.insert_key = false
 
   config.vm.define "ans" do |ans|
-    ans.vm.box = "merev/centos-stream-8"
+    ans.vm.box = "merev/centos-stream"
     ans.vm.hostname = "ansible"
     ans.vm.network "private_network", ip: "192.168.99.99"
     ans.vm.synced_folder "shared/", "/shared"
@@ -21,7 +21,7 @@ Vagrant.configure(2) do |config|
   end
 
   config.vm.define "web" do |web|
-    web.vm.box = "merev/centos-stream-8"
+    web.vm.box = "merev/centos-stream"
     web.vm.hostname = "web"
     web.vm.network "private_network", ip: "192.168.99.100"
     web.vm.network "forwarded_port", guest: 80, host: 8080
@@ -37,7 +37,7 @@ Vagrant.configure(2) do |config|
   end
   
   config.vm.define "db" do |db|
-    db.vm.box = "merev/centos-stream-8"
+    db.vm.box = "merev/centos-stream"
     db.vm.hostname = "db"
     db.vm.network "private_network", ip: "192.168.99.101"
     db.vm.synced_folder "shared/", "/shared"
